@@ -1,14 +1,20 @@
-using Plots,CSV
+using Plots,CSV,DataFrames
 
-# Generate some data
-x = 1:10
-y1 = rand(10)
-y2 = rand(10)
 
-# Create subplots
-plot(
-    plot(x, y1, title = "Panel 1", label = "y1", legend = :top),
-    plot(x, y2, title = "Panel 2", label = "y2", legend = :top),
-    layout = (1, 2),  # 1 row, 2 columns
-    size = (800, 400)
-)
+function make_plot(filename_direct,filename_indirect)
+    
+    df_direct = DataFrame(CSV.File(filename_direct))
+    df_indirect = DataFrame(CSV.File(filename_indirect))
+
+    
+    p_mean = plot([df_direct.t,df_indirect.t], [df_direct.x1,df_indirect.x1])
+    p_kappa = plot([df_direct.t,df_indirect.t], [df_direct.kappa,df_indirect.kappa])
+
+    # Create subplots
+    plot_out = plot(p1,p2,
+            layout = (1, 2),  # 1 row, 2 columns
+            size = (800, 400)
+            )
+
+    savefig(plot_out,"test.png")
+end

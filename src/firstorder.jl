@@ -13,7 +13,6 @@ function solve_indirect_equil(T,g,mu0,muT,filename)
     Lambda = sqrt(2)
     epsilon = 1
   
-    
     #vector of parameters
     p = [g, Lambda^2]
 

@@ -14,8 +14,8 @@ include("firstorder.jl")
 include("viz/plotall.jl")
 
 #integrate both models
-solve_indirect_equil(T,g,mu0,muT,filename_indirect)
 solve_direct_equil(T,g,mu0,muT,filename_direct)
+solve_indirect_equil(T,g,mu0,muT,filename_indirect)
 
 #make plots
-make_plot(filename_indirect,filename_direct)
+make_plot(filename_direct,filename_indirect)
